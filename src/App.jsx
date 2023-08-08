@@ -105,7 +105,6 @@ function Model({ modelPath, rotation, ...props }) {
 
 const initialModels = [
   // { name: "diomond", path: "/blue-diomond/scene.gltf" },
-  // { name: "diomond2", path: "/diamond.glb" },
   { name: "barcelet", path: "/bracelet/scene.gltf" },
   { name: "barcelet2", path: "/bracelet/bracelet.glb" },
   { name: "ring", path: "/rings/ring-1.glb" },
