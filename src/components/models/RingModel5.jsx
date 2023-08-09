@@ -11,11 +11,11 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function RingFiveModel(props) {
-  const { nodes, materials } = useGLTF('/pink-ring.glb')
+  const { nodes, materials } = useGLTF('/rings/pink-ring.glb')
   return (
     <group {...props} dispose={null}>
       <group position={[0, 0, 0.001]} rotation={[-Math.PI, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]} scale={0.001}>
+        <group rotation={[Math.PI / 2, 0, 0]} scale={0.1}>
           <mesh geometry={nodes.Diamond_Round_09_0.geometry} material={materials.material} />
           <mesh geometry={nodes.Diamond_Round_2_08_0.geometry} material={materials.material_1} />
           <mesh geometry={nodes.Diamond_Round_3_03_0.geometry} material={materials.material_2} />
@@ -32,4 +32,4 @@ export function RingFiveModel(props) {
   )
 }
 
-useGLTF.preload('/pink-ring.glb')
+useGLTF.preload('/rings/pink-ring.glb')

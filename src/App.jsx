@@ -6,7 +6,8 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import SceneInit from "./utils/SceneInit";
 import { useTexture } from "@react-three/drei";
-import { SimpleRingModel } from "./components/models/RingTowModel";
+import { RingTowModel } from "./components/models/RingModel2";
+import ModelLoader from "./components/Gallery";
 
 function Model({ modelPath, rotation, ...props }) {
   const group = useRef();
@@ -106,10 +107,10 @@ function Model({ modelPath, rotation, ...props }) {
 
 const initialModels = [
   // { name: "diomond", path: "/blue-diomond/scene.gltf" },
-  { name: "barcelet", path: "/bracelet/scene.gltf" },
-  { name: "barcelet2", path: "/bracelet/bracelet.glb" },
-  { name: "ring", path: "/rings/ring-1.glb" },
-  { name: "ring-2", path: "/rings/ruby-ring.glb" },
+  { name: "ring1", path: "/bracelet/scene.gltf" },
+  { name: "ring2", path: "/bracelet/bracelet.glb" },
+  { name: "ring3", path: "/rings/ring-1.glb" },
+  { name: "ring5", path: "/rings/ruby-ring.glb" },
   // Add more models here...
 ];
 
@@ -131,17 +132,16 @@ function App() {
           <button
             className="bg-slate-300 rounded-lg p-1"
             key={model.name}
-            onClick={() => handleModelClick(model)}
+            onClick={() => handleModelClick(model.name)}
           >
             {model.name}
           </button>
         ))}
       </div>
-      <div className="h-96">
-        <SimpleRingModel />
-      </div>
+
       <div className="canvas-container bg-slate-300 h-[40vh]">
-        {selectedModel && (
+        {selectedModel && <ModelLoader modelName={selectedModel} />}
+        {/* {selectedModel && (
           <Canvas>
             <Suspense fallback={null}>
               <ambientLight intensity={0.9} args={["#ebb907"]} />
@@ -152,11 +152,11 @@ function App() {
                 intensity={1}
               />
               <spotLight position={[0, 1, 1]} angle={0.15} penumbra={1} />
-              {/* <Model
+              <Model
                 modelPath={selectedModel.path}
                 scale={[0.08, 0.08, 0.08]}
                 rotation={rotationSpeed}
-              /> */}
+              />
                <RingTowModel />
               <OrbitControls
                 enablePan={true}
@@ -166,7 +166,7 @@ function App() {
               />
             </Suspense>
           </Canvas>
-        )}
+        )} */}
 
         <div className="rotation-controls">
           <label htmlFor="rotation-speed">Rotation Speed:</label>

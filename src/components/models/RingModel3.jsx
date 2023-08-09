@@ -11,11 +11,11 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function RingThreeModel(props) {
-  const { nodes, materials } = useGLTF('/ruby-ring.glb')
+  const { nodes, materials } = useGLTF('/rings/ruby-ring.glb')
   return (
     <group {...props} dispose={null}>
       <group position={[0, -0.002, 0.002]} rotation={[-Math.PI, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]} scale={0.001}>
+        <group rotation={[Math.PI / 2, 0, 0]} scale={0.1}>
           <mesh geometry={nodes.Object_1_WhiteMetal_0.geometry} material={materials.WhiteMetal} />
           <mesh geometry={nodes.Diamond_Round_Material_2_0.geometry} material={materials.Material_2} />
           <mesh geometry={nodes.Diamond_Round_2_Material_2_0.geometry} material={materials.Material_2} />
@@ -26,4 +26,4 @@ export function RingThreeModel(props) {
   )
 }
 
-useGLTF.preload('/ruby-ring.glb')
+useGLTF.preload('/rings/ruby-ring.glb')

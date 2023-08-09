@@ -15,7 +15,7 @@ export function RingOneModel(props) {
   return (
     <group {...props} dispose={null}>
       <group position={[0, -0.001, 0.001]} rotation={[-Math.PI, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]} scale={0.001}>
+        <group rotation={[Math.PI / 2, 0, 0]} scale={0.1}>
           <mesh geometry={nodes['Object_1_Yellow_Gold-8508952d-1574-41b6-8512-d7f9eb00d480_0'].geometry} material={materials['Yellow_Gold-8508952d-1574-41b6-8512-d7f9eb00d480']} />
           <mesh geometry={nodes['Object_2_White_Gold-b46dab22-34ed-4666-af9c-908cd8a75324_0'].geometry} material={materials['White_Gold-b46dab22-34ed-4666-af9c-908cd8a75324']} />
           <mesh geometry={nodes['Object_3_White_Gold-b46dab22-34ed-4666-af9c-908cd8a75324_2_0'].geometry} material={materials['White_Gold-b46dab22-34ed-4666-af9c-908cd8a75324_2']} />
