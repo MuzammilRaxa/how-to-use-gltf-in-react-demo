@@ -35,7 +35,7 @@ const ModelLoader = ({ modelName }) => {
             <ambientLight intensity={1} args={["#ffd643"]} />
             <directionalLight
               args={["#fff4c9"]}
-              position={[10, 10, 5]}
+              position={[50,50, 5]}
               intensity={1}
             />
             <spotLight position={[0, 1, 1]} angle={0.15} penumbra={1} />
