@@ -6,6 +6,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import SceneInit from "./utils/SceneInit";
 import { useTexture } from "@react-three/drei";
+import { SimpleRingModel } from "./components/models/RingTowModel";
 
 function Model({ modelPath, rotation, ...props }) {
   const group = useRef();
@@ -136,7 +137,9 @@ function App() {
           </button>
         ))}
       </div>
-
+      <div className="h-96">
+        <SimpleRingModel />
+      </div>
       <div className="canvas-container bg-slate-300 h-[40vh]">
         {selectedModel && (
           <Canvas>
@@ -149,11 +152,12 @@ function App() {
                 intensity={1}
               />
               <spotLight position={[0, 1, 1]} angle={0.15} penumbra={1} />
-              <Model
+              {/* <Model
                 modelPath={selectedModel.path}
                 scale={[0.08, 0.08, 0.08]}
                 rotation={rotationSpeed}
-              />
+              /> */}
+               <RingTowModel />
               <OrbitControls
                 enablePan={true}
                 enableZoom={true}
@@ -182,40 +186,3 @@ function App() {
 }
 
 export default App;
-
-// useEffect(() => {
-//   const test = new SceneInit("myThreeJsCanvas");
-//   test.initialize();
-//   // test.animate();
-
-//   // const boxGeometry = new THREE.BoxGeometry(8, 8, 8);
-//   // const boxMaterial = new THREE.MeshNormalMaterial();
-//   // const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-//   // test.scene.add(boxMesh);
-
-//   let loadedModel;
-//   const glftLoader = new GLTFLoader();
-//   glftLoader.load("/diomond/scene.gltf", (gltfScene) => {
-//     loadedModel = gltfScene;
-//     // console.log(loadedModel);
-
-//     gltfScene.scene.rotation.y = Math.PI / 8;
-//     gltfScene.scene.position.y = 3;
-//     gltfScene.scene.scale.set(10, 10, 10);
-//     test.scene.add(gltfScene.scene);
-//   });
-//   // const animate = () => {
-//   //   if (loadedModel) {
-//   //     loadedModel.scene.rotation.x += 0.01;
-//   //     loadedModel.scene.rotation.y += 0.01;
-//   //     loadedModel.scene.rotation.z += 0.01;
-//   //   }
-//   //   requestAnimationFrame(animate);
-//   // };
-//   // animate();
-// }, []);
-
-// const gltfLoder = new GLTFLoader();
-// gltfLoder.load("/diomond/scene.gltf", (gltfScene) => {
-//   test.scene.add(gltfScene.scene);
-// });

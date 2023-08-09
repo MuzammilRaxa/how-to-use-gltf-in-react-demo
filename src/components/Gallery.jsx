@@ -1,43 +1,38 @@
-import { useState, useRef } from 'react';
-import { Suspense } from 'react';
-import { Canvas, useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { useState, useRef } from "react";
+import { Suspense } from "react";
+import { Canvas, useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-const ModelLoader = ({ modelPath }) => {
-  const modelRef = useRef();
-  
-  const modelUrl = new URL(modelPath, import.meta.url)
-  const gltf = useLoader(GLTFLoader, modelUrl);
-
-  useEffect(() => {
-    modelRef.current = gltf.scene;
-  }, [gltf.scene]);
-
-  return <primitive object={modelRef.current} />;
-};
-
-const ImageGallery = () => {
-  const [models, setModels] = useState([]);
-
- 
-  const preloadedModels = [
-    '/diomond/scene.gltf', 
-    '/diomond/scene.gltf', 
-  ];
+const ModelLoader = ({ modelName }) => {
 
   return (
-    <div className="flex flex-wrap">
-      {preloadedModels.map((modelPath, index) => (
-        <div key={`preloaded-${index}`} className="w-full p-2 cursor-pointer">
-          <Canvas>
-            <Suspense fallback={null}>
-              <ambientLight />
-              <pointLight position={[10, 10, 10]} />
-              <ModelLoader modelPath={modelPath} />
-            </Suspense>
-          </Canvas>
-        </div>
-      ))}
+    <div className="canvas-container bg-slate-300 h-[40vh]">
+      {selectedModel && (
+        <Canvas>
+          <Suspense fallback={null}>
+            <ambientLight intensity={0.9} args={["#ebb907"]} />
+
+            <directionalLight
+              args={["#f9d860"]}
+              position={[10, 10, 5]}
+              intensity={1}
+            />
+            <spotLight position={[0, 1, 1]} angle={0.15} penumbra={1} />
+            {/* <Model
+                modelPath={selectedModel.path}
+                scale={[0.08, 0.08, 0.08]}
+                rotation={rotationSpeed}
+              /> */}
+            <SimpleRingModel />
+            <OrbitControls
+              enablePan={true}
+              enableZoom={true}
+              enableRotate={true}
+              // camera={true}
+            />
+          </Suspense>
+        </Canvas>
+      )}
     </div>
   );
 };
